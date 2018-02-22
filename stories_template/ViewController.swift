@@ -22,22 +22,26 @@ class ViewController: UIViewController ,UITableViewDelegate, UITableViewDataSour
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
     }
-
+    
+    //NOTE:Number of headers
     func numberOfSections(in tableView: UITableView) -> Int {
         return header_Topics.count
     }
+    //NOTE:Number of sections in cellection
     func numberOfSections(in collectionView: UICollectionView) -> Int {
         return 1
     }
-    
+    //NOTE:Height for the header in tableview
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         return 55
     }
+    //NOTE:Content for the headers
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let cell = tableView.dequeueReusableCell(withIdentifier: "header") as! HeaderTableViewCell
         cell.HeadingLabel.text = header_Topics[section]
         return cell
     }
+    //NOTE:Number of rows
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if section == 0{
         return 1
@@ -45,6 +49,7 @@ class ViewController: UIViewController ,UITableViewDelegate, UITableViewDataSour
             return cellTopics.count
         }
     }
+    //NOTE:Content for each row
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         if indexPath.section == 0{
@@ -57,6 +62,7 @@ class ViewController: UIViewController ,UITableViewDelegate, UITableViewDataSour
             return cell2
         }
     }
+    //NOTE:Height for row
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         if indexPath.section == 0{
         return 140
@@ -64,10 +70,11 @@ class ViewController: UIViewController ,UITableViewDelegate, UITableViewDataSour
             return 72
         }
     }
+    //NOTE:Number of items in row
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return imageS.count
     }
-    
+    //NOTE:Content for cell in collection view
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "collectionViewCell", for: indexPath) as! CollectionInTableViewCell
         cell.img.image = UIImage(named: imageS[indexPath.row])
